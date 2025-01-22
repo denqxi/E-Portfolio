@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT9AL Portfolio</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet"> <!-- N.W.A style font -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Custom Style*/
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0a0a0a; /* Dark background */
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Bangers', sans-serif; /* Bold, impactful font like N.W.A */
+            text-transform: uppercase;
+            color: #ff0000; /* Bold red for N.W.A theme */
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6), -1px -1px 1px #fff;
+            letter-spacing: 1px;
+        }
+
+        /* Header Section */
+        header {
+            background: url('https://i.pinimg.com/originals/85/3d/bb/853dbb2a9d8a7fa8fcd23ef534fd698b.gif') no-repeat center center/cover;
+            padding: 60px 20px;
+            text-align: left;
+            background-blend-mode: multiply;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            display: flex;
+            flex-direction: column; /* Stack h1 and h2 vertically */
+            align-items: flex-start;
+        }
+
+        header h1 {
+            margin-bottom: 10px; /* Space between h1 and h2 */
+        }
+
+        /* General Navbar Style */
+        .navbar {
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            background: #111;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #ff0000;
+            font-family: 'Bangers', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ff0000;
+            text-transform: uppercase;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: white;
+            transform: translateY(-5px);
+            text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .navbar-toggler {
+            border: none;
+            outline: none;
+        }
+
+        .navbar-toggler-icon {
+            filter: invert(100%);
+        }
+
+        /* Mobile-Specific Adjustments */
+        @media (max-width: 768px) {
+            .navbar-nav .nav-item {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Main content */
+        main {
+            padding: 50px 20px;
+        }
+
+        /*About-Me Section*/
+        #about p{
+            font-size: 20px;
+        }
+
+        /* Section Layout */
+        section {
+            scroll-margin-top: 100px;
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: center; /* Center the section */
+            align-items: center;
+            flex-direction: column; /* Align elements in a column */
+        }
+
+        section h2 {
+            flex-basis: 100%;
+            text-align: center;
+        }
+
+        section p {
+            max-width: 100%;
+            text-align: center; /* Center the paragraph */
+        }
+
+        /* Education Section */
+        #education {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #education-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows items to wrap to the next row */
+            justify-content: center; /* Center-align the articles */
+            gap: 20px; /* Space between articles */
+        }
+
+        #education-container article {
+            flex: 1 1 30%; /* Flexible width: at least 30%, but grow/shrink as needed */
+            max-width: 300px; /* Limit the maximum width */
+            padding: 20px;
+            background-color: #222; /* Background color for articles */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            box-sizing: border-box; /* Include padding in width/height calculations */
+            color: white;
+            text-align: center;
+        }
+
+        #education-container h3 {
+            color: #ff0000;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design for Smaller Devices */
+        @media (max-width: 768px) {
+            #education-container {
+                flex-direction: column; /* Stack articles vertically */
+                gap: 15px; /* Reduce gap for smaller screens */
+            }
+
+            #education-container article {
+                flex: 1 1 100%; /* Take full width on smaller devices */
+                max-width: 100%; /* Remove max-width constraint */
+            }
+        }
+
+        /* Skill Section */
+        #skills {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the skills content */
+        }
+
+        .skill {
+            margin-bottom: 20px;
+            text-align: center; /* Center skill text */
+            width: 80%; /* Ensure the progress bars have enough space to show */
+        }
+
+        .progress-bar {
+            background-color: #444;
+            height: 20px;
+            width: 0; /* Default width */
+            transition: width 1s ease-in-out;
+            border-radius: 5px;
+        }
+
+        .progress-bar[data-progress="15"] {
+            background-color: #ff0000;
+        }
+
+        .progress-bar[data-progress="10"] {
+            background-color: #ff0000;
+        }
+
+        .progress-bar[data-progress="5"] {
+            background-color: #ff0000;
+        }
+
+        .progress-bar[data-progress="60"] {
+            background-color: #ff0000;
+        }
+
+        .progress-bar[data-progress="75"] {
+            background-color: #ff0000;
+        }
+
+        /* Define the keyframes animation for progress bars */
+        @keyframes fillProgress {
+            0% {
+                width: 0%;
+            }
+            100% {
+                width: var(--progress-percent); /* Use the CSS custom property to set final width */
+            }
+        }
+
+        /* Interest Section */
+            #interests {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        #interest h3 {
+            color: #ff0000;
+        }
+
+        /* Customize list group items */
+        #interests .list-group-item {
+            background-color: #222; /* Light red background */
+            border: 1px solid #000000; /* Soft red border */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Style images inside list */
+        #interests .list-group-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        #interests .list-group-item span {
+            font-weight: bold;
+            color: #ff0000;
+        }
+
+        .interest-btn {
+            background-color: #ff0000;
+            border: none;
+            color: white;
+            margin: 0 5px;
+        }
+
+        .interest-btn:hover {
+            background-color: #cc0000;
+            color: white;
+        }
+
+        .interest-content {
+            text-align: left;
+            margin: 20px auto;
+            max-width: 500px;
+        }
+
+        .interest-content h3 {
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+
+        .interest-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        
+
+        /* Footer Section */
+        footer {
+            background-color: #111;
+            padding: 20px;
+            text-align: center;
+            color: #ff0000;
+        }
+
+            #contact {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .social-link {
+            text-decoration: none;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-link img {
+            margin-bottom: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .social-link:hover {
+            transform: scale(1.1);
+            color: #ff4d4d;
+        }
+
+        .social-link p {
+            margin: 0;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Dency Samson</h1>
+        <p>Activity 1 - E-portfolio | IT9aL (6674)</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#education">Education</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#interests">Interests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Socials</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>        
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <!-- About Me Section (Left Positioned) -->
+        <section id="about" class="left">
+            <h2>About Me</h2>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-sm-6">
+                    <p style="text-align: justify">My name is Dency Samson. I'm a 19-year-old second-year BSIT student at the University of Mindanao, living in Km. 12, Sasa, Davao City. I enjoy spending my free time playing games, listening to music, and watching movies, which help me relax and stay inspired. I'm passionate about technology. My goal is to graduate, build a successful career in IT, and create innovative solutions that make a difference.</p>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <source>
+                        <img src="https://scontent.fdvo5-1.fna.fbcdn.net/v/t1.15752-9/473649156_611891848386261_8993062461959398932_n.jpg?stp=dst-jpg_s2048x2048_tt6&_nc_cat=110&ccb=1-7&_nc_sid=9f807c&_nc_eui2=AeG9WHDg3nNP3GwcodVih4nNhcrxJy_kpH6FyvEnL-SkfjVGjVr7qb3HjKStvCWjZmYjkzTml7dQh1nwCIttwPgw&_nc_ohc=P5treXjXau4Q7kNvgHS_3mq&_nc_oc=AdjDBBLQcU7AjeUeUd20Uj19kiK-seKIxW3c6xq_nRvYbkHdJek_GSy7U4OJAQUQrFw&_nc_zt=23&_nc_ht=scontent.fdvo5-1.fna&oh=03_Q7cD1gFVU9boQadtmAzcHI7rN0c4L2MjHawMUyxMVDGl5PVeVQ&oe=67B86C3E" alt="Dency Samson" class="img-fluid">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section (Right Positioned) -->
+        <section id="skills" class="right">
+            <h2>Skills</h2>
+            <div class="skill">
+                <p>HTML</p>
+                <div class="progress-bar" data-progress="15"><span>15%</span></div>
+            </div>
+            <div class="skill">
+                <p>CSS</p>
+                <div class="progress-bar" data-progress="10"><span>10%</span></div>
+            </div>
+            <div class="skill">
+                <p>JavaScript</p>
+                <div class="progress-bar" data-progress="5"><span>5%</span></div>
+            </div>
+            <div class="skill">
+                <p>Python</p>
+                <div class="progress-bar" data-progress="60"><span>60%</span></div>
+            </div>
+            <div class="skill">
+                <p>Java</p>
+                <div class="progress-bar" data-progress="75"><span>75%</span></div>
+            </div>
+        </section>
+
+        <!-- Education Section (Left Positioned) -->
+        <section id="education" class="left">
+            <h2>Education</h2>
+            <div id="education-container">
+                <article>
+                    <h3>Elementary School</h3>
+                    <p>Osmeña Elementary School</p>
+                    <p>Graduated: 2016</p>
+                </article>
+                <article>
+                    <h3>High School</h3>
+                    <p>Francisco Bangoy National High School</p>
+                    <p>Graduated: 2021</p>
+                </article>
+                <article>
+                    <h3>Senior High School</h3>
+                    <p>Jose Maria College Foundation, Inc.</p>
+                    <p>Graduated: 2023</p>
+                </article>
+            </div>
+        </section>               
+
+        <!-- Interests Section -->
+        <section id="interests" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Interests</h2>
+
+                <!-- Buttons for Interests -->
+                <div class="btn-group d-flex justify-content-center color: #007bff" role="group" aria-label="Interest Selector">
+                    <button class="btn interest-btn flex-fill interest-btn" data-bs-target="#games" data-bs-toggle="collapse">Games</button>
+                    <button class="btn interest-btn flex-fill interest-btn" data-bs-target="#music" data-bs-toggle="collapse">Music</button>
+                    <button class="btn interest-btn flex-fill interest-btn" data-bs-target="#movies" data-bs-toggle="collapse">Movies</button>
+                </div>
+
+                <!-- Collapsible Interest Details -->
+                <div class="mt-4">
+                    <div id="games" class="collapse mt-4">
+                        <h3>Games I Enjoy</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9b3e97f2-7e29-44fe-80a9-cd068e923cc7/dduxd55-c9d14592-a876-45ef-b3df-5494462865b8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzliM2U5N2YyLTdlMjktNDRmZS04MGE5LWNkMDY4ZTkyM2NjN1wvZGR1eGQ1NS1jOWQxNDU5Mi1hODc2LTQ1ZWYtYjNkZi01NDk0NDYyODY1YjgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.J3igBWFcAFPoHl74B-ENo2GrhOpJxvDprPuNtTnz60Y" alt="Valorant">
+                                <span>Valorant</span>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="https://image.api.playstation.com/cdn/EP1004/CUSA08519_00/D33Sc3qAlO5ScwHTwq1zvKSPOVvDX2gC.png?w=440&thumb=false" alt="Red Dead Redemption 2">
+                                <span>Red Dead Redemption 2</span>
+                            </li>
+                            <li class="list-group-item">
+                                <img src="https://cdn2.steamgriddb.com/icon/916030603cc86a9b3d29f4d64f1bc415/32/256x256.png" alt="Marvel Rivals">
+                                <span>Marvel Rivals</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="music" class="collapse mt-4">
+                        <h3>Music I Enjoy</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span>Hip-Hop</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>R&B</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>K-Pop</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>K-R&B</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div id="movies" class="collapse mt-4">
+                        <h3>Movies I Love</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span>10 Things I Hate About You</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>In The Mood For Love</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>Godfather: Trilogy</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span>La La Land</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Socials Section -->
+        <section id="contact">
+            <h2>Socials</h2>
+            <div class="d-flex justify-content-center flex-wrap">
+                <!-- Facebook -->
+                <a href="https://www.facebook.com/dency.samson.75" target="_blank" class="social-link mx-3">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 50px; height: 50px;">
+                    <p>Facebook</p>
+                </a>
+
+                <!-- Apple Music -->
+                <a href="https://music.apple.com/profile/denqxi" target="_blank" class="social-link mx-3">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Apple_Music_icon.svg/1200px-Apple_Music_icon.svg.png" alt="Apple Music" style="width: 50px; height: 50px;">
+                    <p>Apple Music</p>
+                </a>
+
+                <!-- GitHub -->
+                <a href="https://github.com/denqxi" target="_blank" class="social-link mx-3">
+                    <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub" style="width: 50px; height: 50px;">
+                    <p>GitHub</p>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Dency's Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script for Progress Bars -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(function(bar) {
+                const percentage = bar.getAttribute('data-progress');
+                bar.style.width = percentage + '%'; // Set the width based on the data-progress attribute
+            });
+        });
+
+        // Toggle Menu Show/Hide
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show'); // Toggle the show class
+        });
+
+        // Remove Show Class on Menu Item Click
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show'); // Hide menu after selection
+            });
+        });
+    </script>
+</body>
+</html>
